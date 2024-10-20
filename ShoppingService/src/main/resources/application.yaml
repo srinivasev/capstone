@@ -1,0 +1,37 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: ShoppingService
+  datasource:
+    #url: jdbc:h2:~/testsrini;AUTO_SERVER=true;
+    #url: jdbc:h2:tcp://localhost:9090/mem:msdb
+    url: jdbc:h2:tcp://127.0.0.1:9090/mem:mydb
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+logging:
+  level:
+    org.h2: DEBUG
+    org.springframework.boot.autoconfigure.orm.jpa: DEBUG
+    org.springframework: debug
+    org.springframework.cache: debug
+    com.capstone.products.controller: debug
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
