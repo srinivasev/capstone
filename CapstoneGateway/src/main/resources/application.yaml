@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  management:
+    endpoint:
+      gateway:
+        enabled: true
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: ProductService
+          uri: lb://ProductService
+          predicates:
+            - Path=/api/products/**
+        - id: InventoryServices
+          uri: lb://InventoryServices
+          predicates:
+            - Path=/api/inventory/**
+        - id: ShoppingService
+          uri: lb://ShoppingService
+          predicates:
+            - Path=/api/shoppingservice/products/**
+      discovery:
+        locator:
+          enabled: true
+          cache-ttl: 30s
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+

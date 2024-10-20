@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: CapstoneH2Server
+  datasource:
+    #url: jdbc:h2:tcp://localhost:9092/~/testdb
+    #url: jdbc:h2:tcp://127.0.0.1:9092/~/testdb
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+    tcp:
+      enabled: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+logging:
+  level:
+    org.h2: DEBUG
+    org.springframework: DEBUG
+
+server:
+  port: 8090

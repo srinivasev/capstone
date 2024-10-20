@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: CustomerService
+  datasource:
+    url: jdbc:h2:mem:msdb
+    username: root
+    password: root
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  jpa:
+    hibernate:
+      ddl.auto: create
+
+logging:
+  level:
+    org.h2: DEBUG
+    org.springframework.boot.autoconfigure.orm.jpa: DEBUG
+    org.springframework: DEBUG
